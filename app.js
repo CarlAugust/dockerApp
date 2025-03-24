@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 
 // For deployment it is commented out...
 // dotenv.config();
+console.log(process.env);
 
 if (!process.env.DB_USER)
 {
