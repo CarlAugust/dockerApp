@@ -1,0 +1,18 @@
+# Ignore node_modules (for Node.js projects)
+node_modules
+
+# Ignore build artifacts
+dist
+build
+
+# Ignore env files (for security)
+.env
+*.env
+
+# Ignore version control
+.git
+.gitignore
+
+# Ignore logs
+*.log
+logs

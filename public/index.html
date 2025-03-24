@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Bucket</title>
+</head>
+<body>
+    <h1>Name Bucket</h1>
+    <form onsubmit="addName(event)">
+        <input type="text" id="name" placeholder="Enter a name" required>
+        <button type="submit">Add Name</button>
+    </form>
+    <h2>Bucket of Names</h2>
+    <ul id="nameList"></ul>
+</body>
+<script>
+    async function addName(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const response = await fetch('/add-name', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name })
+        });
+        if (response.ok) {
+            document.getElementById('name').value = '';
+            loadNames();
+        }
+    }
+
+    async function loadNames() {
+        const response = await fetch('/get-names');
+        const list = await response.json();
+        const nameList = document.getElementById('nameList');
+        nameList.innerHTML = '';
+        list.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item.name;
+            nameList.appendChild(li);
+        });
+    }
+
+    window.onload = loadNames;
+</script>
+</html>
