@@ -12,7 +12,7 @@ console.log(process.env);
 if (!process.env.DB_USER)
 {
   console.log("error: could not find DB_USER");
-}
+}   
 if (!process.env.DB_NAME)
 {
   console.log("error: could not find DB_USER");
@@ -44,12 +44,6 @@ const staticPath = path.join(__dirname, 'public');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-sql.connect(config).then(pool => {
-  console.log("connected");
-}).catch(err => {
-    console.error('SQL Query Error: ', err);
-});
 
 app.get('/', (req, res) =>{
   res.sendFile(path.join(__dirname, "/public/"));
