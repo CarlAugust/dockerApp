@@ -5,7 +5,8 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-dotenv.config();
+// For deployment it is commented out
+// dotenv.config();
 
 const config = {
     user: process.env.DB_USER,
@@ -67,8 +68,8 @@ app.post('/add-name', (req, res) => {
   });
 });
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 app.use(express.static(staticPath));
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
 console.log(`Server running on http://0.0.0.0:${port}`);
 });
