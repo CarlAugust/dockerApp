@@ -8,6 +8,23 @@ import { fileURLToPath } from 'url';
 // For deployment it is commented out...
 // dotenv.config();
 
+if (!process.env.DB_USER)
+{
+  console.log("error: could not find DB_USER");
+}
+if (!process.env.DB_NAME)
+{
+  console.log("error: could not find DB_USER");
+}
+if (!process.env.DB_HOST)
+{
+  console.log("error: could not find DB_USER");
+}
+if (!process.env.DB_PASSWORD)
+{
+  console.log("error: could not find DB_USER");
+}
+
 const config = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
